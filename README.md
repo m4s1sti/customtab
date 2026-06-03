@@ -17,12 +17,12 @@ Google Chrome için geliştirilmiş, varsayılan yeni sekme sayfasını tamamen 
 
 Eklentiyi kendi tarayıcınıza kurmak için aşağıdaki adımları takip edin:
 
-**1. Sağ üstteki "Code > Download ZIP" butonuna tıklayarak bilgisayarınıza indirin ve zip dosyasını bir klasöre çıkartın.**
-**2. Google Chrome'u açın ve adres çubuğuna chrome://extensions/ yazarak Uzantılar sayfasını açın.**
-**3. Sayfanın sağ üst köşesinde bulunan "Geliştirici Modu" (Developer Mode) anahtarını aktif hale getirin.**
-**4. Sol üstte beliren "Paketlenmemiş uzantı yükle" butonuna tıklayın.**
-**5. Bilgisayara çıkarttığınız ana klasörü seçip onaylayın.**
-**6. Artık Chrome'da yeni bir sekme açtığınızda kendi özel panonuz sizi karşılayacaktır.**
+* ***1. Sağ üstteki "Code > Download ZIP" butonuna tıklayarak bilgisayarınıza indirin ve zip dosyasını bir klasöre çıkartın.*** *
+* ***2. Google Chrome'u açın ve adres çubuğuna chrome://extensions/ yazarak Uzantılar sayfasını açın.*** *
+* ***3. Sayfanın sağ üst köşesinde bulunan "Geliştirici Modu" (Developer Mode) anahtarını aktif hale getirin.*** *
+* ***4. Sol üstte beliren "Paketlenmemiş uzantı yükle" butonuna tıklayın.*** *
+* ***5. Bilgisayara çıkarttığınız ana klasörü seçip onaylayın.****
+* ***6. Artık Chrome'da yeni bir sekme açtığınızda kendi özel panonuz sizi karşılayacaktır.*** *
 
 ## Kullanılan Teknolojiler
 
