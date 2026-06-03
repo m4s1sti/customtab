@@ -30,3 +30,5 @@ Eklentiyi kendi tarayıcınıza kurmak için aşağıdaki adımları takip edin:
 * **Pure JavaScript (Vanilla JS)** (DOM Manipülasyonu, Drag and Drop API)
 * **Chrome Extension API** (chrome.storage.local ile yerel veri yönetimi)
 * **Open-Meteo API** (Hava durumu verileri için)
+
+![Eklenti Ekran Görüntüsü](resim.png)
