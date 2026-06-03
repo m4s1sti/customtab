@@ -31,4 +31,4 @@ Eklentiyi kendi tarayıcınıza kurmak için aşağıdaki adımları takip edin:
 * **Chrome Extension API** (chrome.storage.local ile yerel veri yönetimi)
 * **Open-Meteo API** (Hava durumu verileri için)
 
-![Eklenti Ekran Görüntüsü](resim.png)
+![Eklenti Ekran Görüntüsü](ornek.png)
