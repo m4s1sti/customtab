@@ -48,3 +48,6 @@ https://gofile.io/d/lxmbnN
 https://megadb.net/dj6taoyi97eh
 
 https://pixeldrain.com/u/a3LH4oVg
+
+https://drive.online-fix.me:2053/Machine%20Party#
+https://fileditchfiles.st/balpha1/481c86dacb96552c08c2/Machine.Party.v1.0.6-OFME.rar
