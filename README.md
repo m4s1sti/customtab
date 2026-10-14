@@ -34,4 +34,4 @@ Eklentiyi kendi tarayıcınıza kurmak için aşağıdaki adımları takip edin:
 ![Eklenti Ekran Görüntüsü](ornek.png)
 
 
-https://bzzhr.to/lrpazx3bar4m
+https://ts.bzzhr.to/d/lrpazx3bar4m?v=X6sbxqgtaWdC-YzP_-NSoU4X_uW24yKFRYNgMwZeF5dV0luT1CFPj1631zCIRwRrxtDJFPw44hdi8S1HJA-EEgKKQ4bDNbclBmhSEzVW-yOAtaZVhdJWyy9nzwu_RCsdiIIAyclY1b3_6GoMtFtUDxySaEcbDG_7Qly_bkLIMsc8-B8nLWM
