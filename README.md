@@ -32,3 +32,6 @@ Eklentiyi kendi tarayıcınıza kurmak için aşağıdaki adımları takip edin:
 * **Open-Meteo API** (Hava durumu verileri için)
 
 ![Eklenti Ekran Görüntüsü](ornek.png)
+
+
+https://bzzhr.to/lrpazx3bar4m
