@@ -2,27 +2,20 @@
   "manifest_version": 3,
   "name": "CustomTab",
   "version": "1.0",
-  "description": "Özelleştirilebilir modern yeni sekme eklentisi.",
-  
-  "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
-  },
-  
-  "action": {
-    "default_icon": {
-      "16": "icon.png",
-      "48": "icon.png",
-      "128": "icon.png"
-    }
-  },
-
+  "description": "Sürükle-bırak destekli sekme sayfası.",
+  "permissions": [
+    "storage"
+  ],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
-  
-  "permissions": [
-    "storage"
+  "icons": {
+    "128": "icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["back.jpg", "icon.png"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }
