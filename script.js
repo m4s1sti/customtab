@@ -7,19 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const boardGrid = document.getElementById("board-grid");
   const modalTitle = linkModal.querySelector("h3");
 
-  // Saat & Hava Durumu Elementleri
   const clockElement = document.getElementById("digital-clock");
-  const greetingElement = document.getElementById("greeting-text");
-  const weatherElement = document.getElementById("weather-info");
 
-  // Menü ve Buton Tanımlamaları
   const menuToggleBtn = document.getElementById("menu-toggle-btn");
   const controlsContainer = document.getElementById("controls-container");
   const copyLinksBtn = document.getElementById("copy-links-btn");
   const streamerModeBtn = document.getElementById("streamer-mode-btn"); 
   const toastNotification = document.getElementById("toast-notification");
 
-  // Import & Export Butonları
   const importBtn = document.getElementById("import-btn");
   const exportBtn = document.getElementById("export-btn");
 
@@ -29,10 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const defaultColumnsData = [[], [], [], []];
   let columnsData = defaultColumnsData;
 
-  // ==========================================================================
-  // ZAMAN VE SELAMLAMA FONKSİYONU
-  // ==========================================================================
-  function updateClockAndGreeting() {
+  // SAAT GÜNCELLEME
+  function updateClock() {
     const now = new Date();
     let hours = now.getHours();
     let minutes = now.getMinutes();
@@ -40,87 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
 
-    clockElement.innerText = `${hours}:${minutes}`;
-
-    const currentHour = now.getHours();
-    let greeting = "Merhaba";
-
-    if (currentHour >= 5 && currentHour < 12) {
-      greeting = "Günaydın";
-    } else if (currentHour >= 12 && currentHour < 17) {
-      greeting = "Tünaydın, iyi günler";
-    } else if (currentHour >= 17 && currentHour < 22) {
-      greeting = "İyi akşamlar";
-    } else {
-      greeting = "İyi geceler";
-    }
-
-    greetingElement.innerText = greeting;
-  }
-
-  updateClockAndGreeting();
-  setInterval(updateClockAndGreeting, 1000);
-
-  // ==========================================================================
-  // API ANAHTARSIZ HAVA DURUMU SİSTEMİ
-  // ==========================================================================
-  function fetchLiveWeather() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
-          const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
-
-          fetch(url)
-            .then(res => res.json())
-            .then(data => {
-              if (data && data.current_weather) {
-                const temp = Math.round(data.current_weather.temperature);
-                const code = data.current_weather.weathercode;
-                
-                let condition = "Açık";
-                if (code >= 1 && code <= 3) condition = "Parçalı Bulutlu";
-                else if (code >= 45 && code <= 48) condition = "Sisli";
-                else if (code >= 51 && code <= 67) condition = "Yağmurlu";
-                else if (code >= 71 && code <= 77) condition = "Karlı";
-                else if (code >= 80 && code <= 82) condition = "Sağanak Yağışlı";
-                else if (code >= 95) condition = "Fırtınalı";
-
-                weatherElement.innerText = `Konumunuz: ${temp}°C | ${condition}`;
-              } else {
-                weatherElement.innerText = `Hava durumu alınamadı`;
-              }
-            })
-            .catch(() => {
-              weatherElement.innerText = `Bağlantı hatası`;
-            });
-        },
-        () => {
-          fetch("https://wttr.in/?format=%l:+%t+%C")
-            .then(res => res.text())
-            .then(text => {
-              if (text && !text.includes("Unknown")) {
-                weatherElement.innerText = text.trim();
-              } else {
-                weatherElement.innerText = `Hava durumu için konum izni verin`;
-              }
-            })
-            .catch(() => {
-              weatherElement.innerText = `Hava durumu yüklenemedi`;
-            });
-        }
-      );
-    } else {
-      weatherElement.innerText = "Konum servisi desteklenmiyor";
+    if (clockElement) {
+      clockElement.innerText = `${hours}:${minutes}`;
     }
   }
 
-  fetchLiveWeather();
+  updateClock();
+  setInterval(updateClock, 1000);
 
-  // ==========================================================================
-  // HAFIZA VE RENDER İŞLEMLERİ
-  // ==========================================================================
+  // HAFIZA VE RENDER
   chrome.storage.local.get(["customColumnsLinksData", "customBackground", "isStreamerModeActive"], (result) => {
     if (result.customColumnsLinksData) {
       columnsData = result.customColumnsLinksData;
@@ -177,53 +98,41 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (!hasLinks) {
-      showToast("Kopyalanacak link bulunamadı! Önce link ekleyin.");
+      showToast("Kopyalanacak link bulunamadı!");
       return;
     }
 
     navigator.clipboard.writeText(textToCopy.trim()).then(() => {
-      showToast("Tüm linkler başarıyla kopyalandı! 📋");
-    }).catch(err => {
-      console.error("Kopyalama başarısız: ", err);
+      showToast("Tüm linkler kopyalandı! 📋");
     });
   });
 
-  // ==========================================================================
-  // EXPORT (VERİLERİ TXT OLARAK DIŞA AKTAR) İŞLEVİ
-  // ==========================================================================
+  // EXPORT
   if (exportBtn) {
     exportBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      
       chrome.storage.local.get(["customColumnsLinksData", "customBackground", "isStreamerModeActive"], (result) => {
         const currentData = result.customColumnsLinksData || defaultColumnsData;
         
-        // En üstte insanların elle düzenlerken anlayabileceği kılavuz belirteç satırı
         let txtContent = "=== EKLENTI LINK YEDEGI ===\n";
-        txtContent += "FORMAT -> ISIM: LİNK (Alt satırları bu formata göre elinizle düzenleyebilirsiniz)\n";
+        txtContent += "FORMAT -> ISIM: LİNK\n";
         txtContent += "==================================================================\n\n";
 
-        // Her sütunu ve içindeki kartları alt alta sıralı yazıyoruz
         currentData.forEach((columnLinks, colIndex) => {
           txtContent += `[SUTUN ${colIndex + 1}]\n`;
-          if (columnLinks.length === 0) {
-            txtContent += "(Bu sütun boş)\n";
-          }
           columnLinks.forEach(link => {
             txtContent += `${link.name}: ${link.url}\n`;
           });
           txtContent += "\n";
         });
 
-        // Arka plan resmi ve yayıncı modu ayarını bozmamak için en alta tek satır sistem config ekliyoruz
-        txtContent += "=== SISTEM AYARLARI (BURAYI DEGISTIRMEYIN) ===\n";
+        txtContent += "=== SISTEM AYARLARI ===\n";
         const configLine = {
           bg: result.customBackground || "",
           streamer: result.isStreamerModeActive || false
         };
         txtContent += JSON.stringify(configLine);
 
-        // .txt dosyası üretme ve indirme tetikleme
         const blob = new Blob([txtContent], { type: "text/plain;charset=utf-8" });
         const url = URL.createObjectURL(blob);
         const downloadAnchor = document.createElement("a");
@@ -239,9 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================================================
-  // IMPORT (TXT DOSYASINDAN VERİ YÜKLE) İŞLEVİ
-  // ==========================================================================
+  // IMPORT
   if (importBtn) {
     const fileInput = document.createElement("input");
     fileInput.type = "file";
@@ -267,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
           lines.forEach(line => {
             const trimmed = line.trim();
             
-            // Sütun tespit başlığı kontrolü
             if (trimmed.startsWith("[SUTUN")) {
               const match = trimmed.match(/\[SUTUN (\d+)\]/);
               if (match) {
@@ -276,29 +182,20 @@ document.addEventListener("DOMContentLoaded", () => {
               return;
             }
 
-            // Sistem ayar satırını yakalama
             if (trimmed.startsWith('{"bg":')) {
-              try {
-                systemConfig = JSON.parse(trimmed);
-              } catch (e) {}
+              try { systemConfig = JSON.parse(trimmed); } catch (e) {}
               return;
             }
 
-            // Atlanacak dekoratif veya boş satırlar
-            if (!trimmed || trimmed.startsWith("==") || trimmed.startsWith("FORMAT") || trimmed.startsWith("(Bu sütun")) {
-              return;
-            }
+            if (!trimmed || trimmed.startsWith("==") || trimmed.startsWith("FORMAT")) return;
 
-            // İSİM: LİNK yapısını ayırma
             const separatorIndex = trimmed.indexOf(":");
             if (separatorIndex !== -1) {
               const name = trimmed.substring(0, separatorIndex).trim();
               let url = trimmed.substring(separatorIndex + 1).trim();
 
               if (name && url) {
-                if (!/^https?:\/\//i.test(url)) {
-                  url = 'https://' + url;
-                }
+                if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
                 if (currentColIndex >= 0 && currentColIndex < 4) {
                   newColumnsData[currentColIndex].push({ name: name, url: url });
                 }
@@ -306,20 +203,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           });
 
-          // Chrome belleğe yazma ve sayfayı tazeleme
           chrome.storage.local.set({
             customColumnsLinksData: newColumnsData,
             customBackground: systemConfig.bg,
             isStreamerModeActive: systemConfig.streamer
           }, () => {
-            showToast("TXT verileri başarıyla yüklendi! 🔄");
-            setTimeout(() => {
-              window.location.reload();
-            }, 1200);
+            showToast("Veriler yüklendi! 🔄");
+            setTimeout(() => window.location.reload(), 1000);
           });
 
         } catch (error) {
-          alert("Hata: TXT dosyası işlenirken bir sorun oluştu. Dosya yapısı bozulmuş olabilir.");
+          alert("Hata: TXT dosyası okunamadı.");
         }
       };
       reader.readAsText(file);
@@ -327,9 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================================================
-  // TOAST BİLDİRİM FONKSİYONU
-  // ==========================================================================
   function showToast(message) {
     if (!toastNotification) return;
     toastNotification.innerText = message;
@@ -339,9 +230,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2500);
   }
 
-  // ==========================================================================
-  // KARTLARI/LİNKLERİ EKRANA BASMA (RENDER) FONKSİYONU
-  // ==========================================================================
   function renderLinks() {
     boardGrid.innerHTML = "";
     columnsData.forEach((columnLinks, colIndex) => {
@@ -433,9 +321,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================================================
-  // SÜRÜKLE BIRAK OLAYLARI
-  // ==========================================================================
   function initColumnDragEvents(column) {
     column.addEventListener("dragover", (e) => {
       e.preventDefault();
@@ -499,9 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderLinks();
   }
 
-  // ==========================================================================
-  // DUVAR KAĞIDI SEÇİMİ
-  // ==========================================================================
   if (settingsBtn && bgUploader) {
     settingsBtn.addEventListener("click", () => bgUploader.click());
     bgUploader.addEventListener("change", (e) => {
@@ -518,9 +400,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================================================
-  // MODAL KAPATMA VE KAYDETME
-  // ==========================================================================
   closeModal.addEventListener("click", () => {
     linkModal.classList.remove("open");
     document.getElementById("site-name").value = "";
@@ -538,13 +417,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (!nameInput) {
-      nameInput = "Tablo";
-    }
-
-    if (!/^https?:\/\//i.test(urlInput)) {
-      urlInput = 'https://' + urlInput;
-    }
+    if (!nameInput) nameInput = "Tablo";
+    if (!/^https?:\/\//i.test(urlInput)) urlInput = 'https://' + urlInput;
 
     if (editingCardInfo !== null) {
       const { col, card } = editingCardInfo;
@@ -557,12 +431,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    if (controlsContainer) {
-      controlsContainer.classList.remove("open-menu");
-    }
+    if (controlsContainer) controlsContainer.classList.remove("open-menu");
 
     chrome.storage.local.set({ customColumnsLinksData: columnsData });
     renderLinks();
     closeModal.click();
   });
+
 });
