@@ -33,24 +33,3 @@ Eklentiyi kendi tarayıcınıza kurmak için aşağıdaki adımları takip edin:
 
 ![Eklenti Ekran Görüntüsü](ornek.png)
 
-
-https://ts.bzzhr.to/d/lrpazx3bar4m?v=X6sbxqgtaWdC-YzP_-NSoU4X_uW24yKFRYNgMwZeF5dV0luT1CFPj1631zCIRwRrxtDJFPw44hdi8S1HJA-EEgKKQ4bDNbclBmhSEzVW-yOAtaZVhdJWyy9nzwu_RCsdiIIAyclY1b3_6GoMtFtUDxySaEcbDG_7Qly_bkLIMsc8-B8nLWM
-
-https://ts.bzzhr.to/d/8sr89mbhzi84?v=qtsPnFI9yP2YRwCJzFjCvnYQk7TJzX1-toQiJaDSi5c89gcCbcv28l9moGRMsEXbypCY4--iww5iSSZ-pd-cJdtPDkWeacI1AFjrK12eUSgnPp78RrHoNDWi0lcMDR2Nfm0Di09pjhb44Z6SWySr72snMWQROMqe4cGkE1VDFnbECpp9IN51BHF63H2_lfqCg2M
-
-https://ts.bzzhr.to/d/qqko09k33pdh?v=W1ZYaMQjltHDhGJfNN60uKLRXZK3dOW8SWkP3NReDS0wMsQWNFpKLUMYLsKH3buVMhHRMYaT2Df9bml8jYQ-5nSpS6Ep4nEfkQqAESCFFZRVYMvSgTV3b8zTmyOJTfQaEWpTx42cWUg6FQkMwzgjmEuw3Om6iW_4c3JgB-3txyMl_KEB
-
-https://ts.bzzhr.to/d/g1m04s6rfejm?v=Pnyj6HA38ITn0aroI0Cfz1KARN6kNHwql6Qt8qiC3vtCqRZuVsERkem9x1WgW1lmpAcOwQho41rkI2MpxgiBnKe0KtQRiLDM8oO96hH-YGHlJC-p2Su7SSTz4bPDyh6r0ie2LlP2XpeFguyETijoH7SmJPn2uGdykApjn35eMhJzgmv2JMcKkLBI7p6JiImP-I4Sew
-
-https://gofile.io/d/jMI5xb
-
-https://gofile.io/d/lxmbnN
-https://megadb.net/dj6taoyi97eh
-
-https://pixeldrain.com/u/a3LH4oVg
-
-https://drive.online-fix.me:2053/Machine%20Party#
-https://fileditchfiles.st/balpha1/481c86dacb96552c08c2/Machine.Party.v1.0.6-OFME.rar
-
-https://pixeldrain.com/u/GD6Dvfgm
-https://drive.online-fix.me:2053/Gang%20Beasts#
