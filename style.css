@@ -1,208 +1,180 @@
-*, *::before, *::after {
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  background: url('back.jpg') no-repeat center center fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0f0f11;
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #ffffff;
-  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  overflow-x: hidden;
 }
 
 .main-container {
-  max-width: 1250px;
-  margin: 40px auto 100px auto;
-  padding: 0 30px;
-}
-
-/* SAAT VE HAVA DURUMU (WELCOME WIDGET) STİLLERİ */
-.welcome-widget {
-  margin-bottom: 25px;
-  padding: 10px 5px;
+  width: 90%;
+  max-width: 1200px;
+  height: 85vh;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.welcome-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  user-select: none;
 }
 
 .widget-time-row {
   display: flex;
   align-items: baseline;
-  gap: 18px;
+  gap: 15px;
 }
 
 #digital-clock {
-  margin: 0;
-  font-size: 48px;
+  font-size: 4.5rem;
   font-weight: 700;
-  letter-spacing: -1px;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  line-height: 1;
+  letter-spacing: -2px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-.weather-text {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 4px 12px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.greeting-subtitle {
-  font-size: 16px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.3px;
-  margin-top: 4px;
-}
-
-/* Üst Başlık Sekme Alanı */
 .tab-header {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-bottom: 24px;
-  margin-bottom: 35px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 10px;
+  margin-bottom: 5px;
 }
 
 .tab-btn {
-  background: #ffffff;
-  color: #000000;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: bold;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* 4 SÜTUNLU PANO VE KART TASARIMLARI */
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 .board-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 20px;
+  flex: 1;
   align-items: start;
 }
 
 .grid-column {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 12px;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  min-height: 300px;
-  background: rgba(255, 255, 255, 0.01);
-  border-radius: 16px;
-  padding: 10px;
-  transition: background 0.2s ease;
+  gap: 10px;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .grid-column.drag-over-column {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 242, 254, 0.6);
 }
 
 .grid-card-wrapper {
   position: relative;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: grab;
-  transition: transform 0.2s, opacity 0.2s;
 }
 
-.grid-card-wrapper:active {
-  cursor: grabbing;
+.grid-card-wrapper:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .grid-card-wrapper.dragging {
-  opacity: 0.2;
-  transform: scale(0.96);
+  opacity: 0.4;
+  cursor: grabbing;
 }
 
 .grid-card {
-  background: rgba(30, 31, 38, 0.40); 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 14px 18px;
-  text-decoration: none;
-  color: #ffffff;
-  transition: background 0.2s, border-color 0.2s;
   display: block;
-}
-
-.grid-card-wrapper:hover .grid-card {
-  background: rgba(40, 42, 53, 0.65);
-  border-color: rgba(255, 255, 255, 0.1);
+  padding: 12px 14px;
+  text-decoration: none;
+  color: #fff;
 }
 
 .card-label {
-  font-size: 12px;
-  color: #b3b9bf;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  margin-bottom: 10px;
-  transition: filter 0.3s ease;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .card-main {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  font-weight: 500;
 }
 
-.card-main img, .card-main span {
-  transition: filter 0.3s ease;
+.card-main img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
 }
 
-/* YAYINCI MODU BLUR AYARLARI */
-body.streamer-mode-active .card-label,
-body.streamer-mode-active .card-main img,
-body.streamer-mode-active .card-main span {
-  filter: blur(7px);
-  pointer-events: none;
-  user-select: none;
-}
-
-/* AKSİYON BUTONLARI */
 .card-actions-container {
   position: absolute;
-  top: 12px;
-  right: 14px;
+  top: 8px;
+  right: 8px;
   display: flex;
-  gap: 8px;
+  gap: 4px;
   opacity: 0;
-  pointer-events: none;
   transition: opacity 0.2s ease;
-  z-index: 5;
 }
 
 .grid-card-wrapper:hover .card-actions-container {
   opacity: 1;
-  pointer-events: auto;
 }
 
 .action-card-btn {
+  background: rgba(0, 0, 0, 0.5);
   border: none;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  cursor: pointer;
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  transition: background 0.2s, transform 0.15s;
-  padding: 0;
-}
-
-.action-card-btn:hover {
-  transform: scale(1.08);
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .action-card-btn svg {
@@ -210,315 +182,206 @@ body.streamer-mode-active .card-main span {
   height: 14px;
 }
 
-.action-card-btn.edit-btn { 
-  background: rgba(38, 40, 50, 0.85); 
-  color: #b3b9bf;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-}
-.action-card-btn.edit-btn:hover { 
-  background: rgba(50, 53, 66, 1); 
-  color: #ffffff; 
-}
-
-.action-card-btn.delete-btn { 
-  background: rgba(255, 90, 90, 0.08); 
-  color: #ff5a5a; 
-  border: 1px solid rgba(255, 90, 90, 0.05);
-}
-.action-card-btn.delete-btn:hover { 
-  background: rgba(255, 90, 90, 0.25) !important; 
-  color: #ffffff; 
-}
+.action-card-btn.edit-btn:hover { background: #3b82f6; }
+.action-card-btn.delete-btn:hover { background: #ef4444; }
 
 .column-add-card-btn {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 16px;
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 20px;
-  font-weight: bold;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 1.2rem;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-  margin-top: 4px;
-  width: 100%;
+  transition: all 0.2s ease;
 }
 
 .column-add-card-btn:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* ==========================================================================
-   ORTAK KONTROL BUTONLARI VE MENÜ STİLLERİ (SİYAH TEMA)
-   ========================================================================== */
-.bottom-controls-stack {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 100;
-  align-items: center;
-}
-
-/* Tüm butonların ortak saf siyah şablonu */
-.circle-action-btn {
-  background: #000000 !important; /* Her durumda saf siyah kalır */
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6) !important;
-  color: #ffffff !important;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background 0.25s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.25s ease !important;
-  padding: 0;
-  position: relative;
-}
-
-.circle-action-btn:hover {
-  background: #121212 !important; /* Üzerine gelindiğinde hafif yumuşak siyah */
-  transform: scale(1.08) !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-.circle-action-btn svg {
-  width: 18px;
-  height: 18px;
-  color: #ffffff !important;
-}
-
-/* Menü İkonu ve Çarpı İşareti Geçişleri */
-.close-icon-svg {
-  position: absolute;
-  opacity: 0;
-  transform: scale(0.6) rotate(-40deg);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.custom-menu-lines {
-  width: 18px;
-  height: 12px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.3s ease;
-}
-
-.custom-menu-lines .line {
-  display: block;
-  background-color: #ffffff;
-  height: 2px;
-  border-radius: 2px;
-}
-
-/* Menü Açıldığında Ana Butonun Tasarımı (Siyah kalıyor) */
-.bottom-controls-stack.open-menu .main-toggle {
-  background: #000000 !important; 
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  transform: scale(1);
-}
-
-.bottom-controls-stack.open-menu .custom-menu-lines {
-  opacity: 0;
-  transform: scale(0.4) rotate(90deg);
-}
-
-.bottom-controls-stack.open-menu .close-icon-svg {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-  color: #ffffff !important; /* Açıldığında çarpı işareti de beyaz kalır */
-}
-
-/* Açılır Üst Küçük Butonlar (Yayıncı Modu, Kopyala, Import, Export) */
-.menu-up-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(20px) scale(0.8);
-  pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-              transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.bottom-controls-stack.open-menu .menu-up-stack {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-/* Küçük alt butonlar da artık tamamen saf siyah ve aynı yapıda */
-.circle-action-btn.sub-btn {
-  width: 38px;
-  height: 38px;
-}
-
-.circle-action-btn.sub-btn svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* Yayıncı Modu Aktifken Yeşil Kenarlık Parlaması */
-.circle-action-btn#streamer-mode-btn.active-mode {
-  background: #001f12 !important; 
-  border-color: #00c873 !important; 
-}
-
-.circle-action-btn#streamer-mode-btn.active-mode svg {
-  color: #00c873 !important;
-  filter: drop-shadow(0 0 4px rgba(0, 200, 115, 0.6));
-}
-
-/* MODAL & TOAST STİLLERİ */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 11, 14, 0.45);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.25s ease;
 }
 
 .modal-overlay.open {
-  opacity: 1 !important;
-  pointer-events: auto !important;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal-content {
-  background: rgba(23, 24, 30, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 32px;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 420px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  transform: scale(0.92) translateY(10px);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  width: 360px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.modal-overlay.open .modal-content {
-  transform: scale(1) translateY(0) !important;
-}
-
-.modal-content h3 {
-  margin-top: 0;
-  margin-bottom: 24px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #ffffff;
-}
+.modal-content h3 { font-size: 1.1rem; }
 
 .input-group {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .input-group label {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  margin-bottom: 8px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .input-group input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 12px 16px;
-  color: #ffffff;
-  font-size: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px;
+  color: #fff;
   outline: none;
-  transition: all 0.25s ease;
 }
 
 .input-group input:focus {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  border-color: #00f2fe;
 }
 
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
-  margin-top: 30px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .modal-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
   border: none;
-  padding: 12px 22px;
-  border-radius: 12px;
-  cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
-  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-.modal-btn.cancel {
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.7);
+.modal-btn.cancel { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.modal-btn.save { background: #00f2fe; color: #000; }
+
+.bottom-controls-stack {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
 }
 
-.modal-btn.cancel:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+.circle-action-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-btn.save {
-  background: #ffffff;
-  color: #0a0b0e;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+.circle-action-btn:hover {
+  transform: scale(1.08);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-.modal-btn.save:hover {
-  background: #f3f3f3;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+.circle-action-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.menu-up-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bottom-controls-stack.open-menu .menu-up-stack {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.custom-menu-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.custom-menu-lines .line {
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.close-icon-svg { display: none; }
+
+.bottom-controls-stack.open-menu .custom-menu-lines { display: none; }
+.bottom-controls-stack.open-menu .close-icon-svg { display: block; }
+
+body.streamer-mode-active .grid-card {
+  filter: blur(6px);
+  transition: filter 0.3s ease;
+}
+
+body.streamer-mode-active .grid-card:hover {
+  filter: blur(0);
+}
+
+.active-mode {
+  background: #ef4444 !important;
+  border-color: #f87171 !important;
 }
 
 #toast-notification {
   position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-20px);
-  background: #ffffff;
-  color: #000000;
-  padding: 10px 24px;
+  top: 20px;
+  right: 50%;
+  transform: translateX(50%) translateY(-50px);
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px 20px;
   border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  z-index: 9999;
-  transition: opacity 0.3s, transform 0.3s;
-  pointer-events: none;
+  font-size: 0.9rem;
+  z-index: 2000;
   opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
 }
 
 #toast-notification.toast-show {
+  transform: translateX(50%) translateY(0);
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
