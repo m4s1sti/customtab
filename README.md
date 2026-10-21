@@ -8,7 +8,7 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Google Chrome için geliştirilmiş; varsayılan yeni sekme sayfasını tamamen kişiselleştirilebilir, minimalist bir bağlantı panosuna dönüştüren eklentidir. Linklerinizi sütunlar halinde organize edebilir, sürükle-bırak yöntemiyle sıralayabilir ve kendi temiz çalışma alanınızı oluşturabilirsiniz.
+Google Chrome için geliştirilmiş; varsayılan yeni sekme sayfasını tamamen kişiselleştirilebilir, minimalist bir bağlantı panosuna dönüştüren eklentidir. Linklerinizi sütunlar halinde organize edebilir, sürükle bırak yöntemiyle sıralayabilir ve kendi temiz çalışma alanınızı oluşturabilirsiniz.
 
 </div>
 
@@ -40,7 +40,7 @@ Eklentiyi Chrome tarayıcınıza kurmak için aşağıdaki adımları takip edin
 3. Sayfanın sağ üst köşesinde bulunan **"Geliştirici Modu" (Developer Mode)** anahtarını aktif hale getirin.
 4. Sol üstte beliren **"Paketlenmemiş öğe yükle"** butonuna tıklayın.
 5. Bilgisayarınıza çıkardığınız eklenti klasörünü seçin.
-6. Artık yeni bir sekme açtığınızda özel panonuz sizi karşılayacaktır!
+6. Artık yeni bir sekme açtığınızda özel panonuz sizi karşılayacaktır.
 
 ---
 
