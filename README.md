@@ -8,44 +8,41 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Google Chrome için geliştirilmiş; varsayılan yeni sekme sayfasını tamamen kişiselleştirilebilir, minimalist bir bağlantı panosuna dönüştüren eklentidir. Linklerinizi sütunlar halinde organize edebilir, sürükle bırak yöntemiyle sıralayabilir ve kendi temiz çalışma alanınızı oluşturabilirsiniz.
+A minimalist and fully customizable New Tab page extension for Google Chrome. Organize your links in columns, rearrange them via drag-and-drop, and build your own clean workspace.
 
 </div>
 
 ---
 
-##  Özellikler
+## Features
 
-- **4 Sütunlu Bağlantı Panosu:** Linklerinizi kategorize ederek düzenli bir şekilde saklayın.
-- **Sürükle-Bırak (Drag & Drop):** Eklediğiniz link kartlarını sütunlar arasında veya sütun içinde özgürce taşıyın.
-- **Kişiselleştirilebilir Arka Plan:** Bilgisayarınızdan istediğiniz görseli yükleyerek duvar kağıdını anlık olarak değiştirin.
-- **Minimalist Canlı Saat:** Odaklanmayı artırmak için sadeleştirilmiş dijital saat ekranı.
-- **Yayıncı Modu (Streamer Mode):** Ekran paylaşırken veya video kaydederken gizliliğinizi korumak için tek tıkla link detaylarını bulanıklaştırma.
-- **TXT Yedekleme (Import/Export):** Tüm bağlantılarınızı ve ayarlarınızı Not Defteri (`.txt`) formatında dışa aktarın ve geri yükleyin.
-- **Hızlı Kopyalama:** Paneldeki tüm linkleri tek tıkla panoya kopyalayın.
-
----
-
-
-![CustomTab Ekran Görüntüsü](ornek.png)
+- **4-Column Link Board:** Categorize and manage your links efficiently.
+- **Drag & Drop:** Move link cards freely across or within columns.
+- **Custom Background:** Instantly change your wallpaper by uploading any local image.
+- **Minimalist Live Clock:** A clean, distraction-free digital clock.
+- **Streamer Mode:** Instantly blur link details with a single click for privacy during screen sharing or recording.
+- **TXT Backup (Import/Export):** Easily backup and restore all your links and settings via `.txt` files.
+- **Quick Copy:** Copy all saved links to your clipboard with one click.
 
 ---
 
-##  Kurulum
-
-Eklentiyi Chrome tarayıcınıza kurmak için aşağıdaki adımları takip edin:
-
-1. Bu projeyi bilgisayarınıza indirin (`Code > Download ZIP`) ve bir klasöre çıkartın.
-2. Google Chrome'u açın ve adres çubuğuna `chrome://extensions/` yazarak **Uzantılar** sayfasını açın.
-3. Sayfanın sağ üst köşesinde bulunan **"Geliştirici Modu" (Developer Mode)** anahtarını aktif hale getirin.
-4. Sol üstte beliren **"Paketlenmemiş öğe yükle"** butonuna tıklayın.
-5. Bilgisayarınıza çıkardığınız eklenti klasörünü seçin.
-6. Artık yeni bir sekme açtığınızda özel panonuz sizi karşılayacaktır.
+![CustomTab Screenshot](ornek.png)
 
 ---
 
-##  Kullanılan Teknolojiler
+## Installation
 
-- **HTML5 & CSS3:** Flexbox, CSS Grid ve Glassmorphism arayüz tasarımı.
-- **Pure JavaScript (Vanilla JS):** DOM manipülasyonu, Drag and Drop API.
-- **Chrome Extension API (Manifest V3):** `chrome.storage.local` ile yerel veri yönetimi ve `chrome_url_overrides`.
+1. Download this repository (`Code > Download ZIP`) and extract it into a folder.
+2. Open Google Chrome and navigate to `chrome://extensions/`.
+3. Enable **Developer Mode** using the toggle in the top-right corner.
+4. Click **Load unpacked** in the top-left corner.
+5. Select the extracted extension folder.
+6. Open a new tab to start using your custom dashboard.
+
+---
+
+## Tech Stack
+
+- **HTML5 & CSS3:** Flexbox, CSS Grid, and Glassmorphism UI design.
+- **Pure JavaScript (Vanilla JS):** DOM manipulation, Drag and Drop API.
+- **Chrome Extension API (Manifest V3):** Local data management via `chrome.storage.local` and `chrome_url_overrides`.
